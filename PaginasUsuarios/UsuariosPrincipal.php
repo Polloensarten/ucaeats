@@ -1,3 +1,13 @@
+<?php
+    // Iniciar la sesión (necesario en cada página que use sesiones)
+        session_start();
+
+        // Verificar si el usuario ha iniciado sesión
+        if (!isset($_SESSION['name'])) {
+            header("Location: ../Login/login.html"); // Redirigir al login si no ha iniciado sesión
+            exit();
+        }
+    ?>    
 <!DOCTYPE html>
 <html>
     <head>
@@ -11,7 +21,7 @@
     <body>
        <nav class="navbar bg-info border-bottom border-body sticky-top">
             <div name="BarraSuperior" style="text-align: center;" class="container-fluid">
-                <p class="navbar-brand mb-0 h1">Bienvenido nombreGenerico1</p>
+                <p class="navbar-brand mb-0 h1">Bienvenido <?php echo htmlspecialchars($_SESSION['name']);?></p>
                 <div class="d-flex">
                     <button class="btn btn-primary"><i class="fa-solid fa-cart-shopping"></i></button>
                 </div>
