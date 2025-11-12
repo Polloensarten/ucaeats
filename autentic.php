@@ -22,7 +22,7 @@ if (!isset($_POST['username'], $_POST['password'])) {
 }
 
 // Evitar inyección SQL
-if ($stmt = $conexion->prepare('SELECT id_usuario, contrasena FROM accounts WHERE nombreUsuario = ?')) {
+if ($stmt = $conexion->prepare('SELECT id_usuario, contrasena FROM cuentas WHERE nombreUsuario = ?')) {
 
     // Parámetro de enlace
     $stmt->bind_param('s', $_POST['username']);
