@@ -44,7 +44,7 @@ if ($stmt = $conexion->prepare('SELECT id_usuario, contrasena FROM cuentas WHERE
             $_SESSION['id'] = $id_usuario;
 
             // Redirigir al panel principal
-            header('Location: UsuariosPrincipal.php');
+            header('Location: PaginasUsuarios\UsuariosPrincipal.php');
             exit;
         } else {
             // Contraseña incorrecta
