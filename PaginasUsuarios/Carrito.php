@@ -7,36 +7,17 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-        <link rel="stylesheet" href="Negocios.css">
+        <link rel="stylesheet" href="Carrito.css">
     </head>
     <body>
        <nav class="navbar bg-info border-bottom border-body sticky-top">
             <div name="BarraSuperior" style="text-align: center;" class="container-fluid">
                 <div class="d-flex">
-                    <a href="UsuariosPrincipal.php"><button class="btn btn-danger"><i class="fa-solid fa-arrow-left"></i></button></a>
-                </div>
-                <div class="d-flex">
-                    <a href="Carrito.php"><button class="btn btn-primary"><i class="fa-solid fa-cart-shopping"></i></button></a>
+                    <a href="NegocioRand.php"><button class="btn btn-danger"><i class="fa-solid fa-arrow-left"></i></button></a>
                 </div>
             </div>
        </nav>
        <main class="contenedorPrincipal" style="display: grid; grid-template-columns: auto auto; ">
-            <section class="ContenedorInfo" style=" width:400px">
-                <h1>Wario's</h1>
-                <figure class="BuissnesImage"style="width:350px; height:350px;  ">
-                            <img src="./Images/placeholder.png" style="width:100%; height:100%; object-fit: cover;">
-                </figure>
-                <h3>Vendemos los mejores Warios traidos a usted en diferentes tipos de salsa y presentaciones</h3>
-                <article style="display:grid; grid-template-columns: auto auto;">
-                    <div style="grid-column:1;">
-                        <h6>Tiempo de espera:</h6>
-                        <p>5.99 Minutos</p>
-                    </div>
-                    <div style="grid-column:2;">
-                        <h6>Status:</h6>
-                        <p>Cerrado</p>
-                    </div>
-                </article>
             </section>    
             <section class="ContenedorItems">
                  <div class="Item" style="display: grid;  grid-template-rows:100px,20px;" >
@@ -136,6 +117,17 @@
                 </div>
                   
             </section>
+            <section class="ContenedorPago" style=" width:400px">
+                <article class="Precio">
+                    <p>subtotal:</p>
+                    <p>descuento:</p>
+                    <hr>
+                    <h5>Total:</h5>
+                </article>
+                <footer style="display:flex; padding-top:10px;">
+                    <button style="width:100%">Comprar</button>
+                </footer>
+            </section>    
         </main>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
