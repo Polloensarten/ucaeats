@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Sistema de Reseñas con Estrellas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        #reviews {
+            margin-top: 20px;
+        }
+
+        .review {
+            background: #f2f2f2;
+            padding: 10px;
+            border-radius: 6px;
+            margin-bottom: 10px;
+        }
+
+        .review-author {
+            font-weight: bold;
+        }
+
+        .stars {
+            color: gold;
+            font-size: 18px;
+        }
+
+        .rating-select span {
+            font-size: 22px;
+            cursor: pointer;
+            color: #ccc;
+        }
+
+        .rating-select span.selected {
+            color: gold;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Deja una reseña</h2>
+
+    <form id="reviewForm">
+        <label>Nombre:</label><br>
+        <input type="text" id="author" required><br><br>
+
+        <label>Calificación:</label><br>
+        <div class="rating-select" id="ratingSelect">
+            <span data-value="1">★</span>
+            <span data-value="2">★</span>
+            <span data-value="3">★</span>
+            <span data-value="4">★</span>
+            <span data-value="5">★</span>
+        </div>
+        <input type="hidden" id="rating" required>
+        <br>
+
+        <label>Reseña:</label><br>
+        <textarea id="content" rows="4" required></textarea><br><br>
+
+        <button type="submit">Publicar</button>
+    </form>
+
+    <h2>Reseñas</h2>
+    <div id="reviews"></div>
+
+    <script>
+        const form = document.getElementById("reviewForm");
+        const reviewsContainer = document.getElementById("reviews");
+        const ratingInput = document.getElementById("rating");
+        const ratingSelect = document.getElementById("ratingSelect");
+        const stars = ratingSelect.querySelectorAll("span");
+
+        // Manejo de selección de estrellas
+        stars.forEach(star => {
+            star.addEventListener("click", () => {
+                let value = star.getAttribute("data-value");
+                ratingInput.value = value;
+
+                // Colorear las seleccionadas
+                stars.forEach(s => {
+                    s.classList.toggle("selected", s.getAttribute("data-value") <= value);
+                });
+            });
+        });
+
+        form.addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const author = document.getElementById("author").value.trim();
+            const content = document.getElementById("content").value.trim();
+            const rating = ratingInput.value;
+
+            if (!author || !content || !rating) return;
+
+            const reviewDiv = document.createElement("div");
+            reviewDiv.classList.add("review");
+
+            const starsHTML = "★".repeat(rating) + "☆".repeat(5 - rating);
+
+            reviewDiv.innerHTML = `
+                <div class="review-author">${author}</div>
+                <div class="stars">${starsHTML}</div>
+                <div class="review-content">${content}</div>
+            `;
+
+            reviewsContainer.appendChild(reviewDiv);
+
+            form.reset();
+            stars.forEach(s => s.classList.remove("selected"));
+            ratingInput.value = "";
+        });
+    </script>
+
+</body>
+</html>

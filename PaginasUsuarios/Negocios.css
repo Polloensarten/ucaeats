@@ -1,0 +1,54 @@
+.ContenedorItems {
+    grid-column:2;
+    padding: 1px;
+  width: 700px;
+  height: 650px;
+  overflow: auto; /* Opcional: scroll, hidden, visible */
+  border-radius: 10px;
+}
+.contenedorPrincipal
+{
+    place-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+.FoodDescription
+{
+    padding: 5px;
+    width: fit-content;
+    height:fit-content;
+}
+.Item
+{   
+    
+    border-radius: 10px;
+    border: 1px solid gray;
+    margin-bottom: 10px;
+}
+.FoodImage
+{
+    padding: 10px;
+}
+.FoodBtns
+{
+    padding-left: 10px;
+    gap: 10px;
+}
+.Menos
+{
+    border-radius: 100%;
+}
+.Mas
+{
+    border-radius: 100%;
+}
+.ContenedorInfo
+{
+    grid-column:1;
+}
+html, body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden; /* Prevent scrolling if content overflows */
+        scroll-behavior: smooth;
+    }
