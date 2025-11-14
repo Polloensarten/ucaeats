@@ -1,14 +1,16 @@
-.contenedor-desplazable {
+.ContenedorItems {
+    grid-column:2;
     padding: 1px;
   width: 700px;
-  height: 600px;
+  height: 650px;
   overflow: auto; /* Opcional: scroll, hidden, visible */
   border-radius: 10px;
 }
 .contenedorPrincipal
 {
-    padding-top: 10px;
     place-items: center;
+    width: 100vw;
+    height: 100vh;
 }
 .FoodDescription
 {
@@ -17,7 +19,8 @@
     height:fit-content;
 }
 .Item
-{
+{   
+    
     border-radius: 10px;
     border: 1px solid gray;
     margin-bottom: 10px;
@@ -39,3 +42,13 @@
 {
     border-radius: 100%;
 }
+.ContenedorInfo
+{
+    grid-column:1;
+}
+html, body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden; /* Prevent scrolling if content overflows */
+        scroll-behavior: smooth;
+    }

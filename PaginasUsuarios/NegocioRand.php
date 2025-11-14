@@ -20,13 +20,30 @@
                 </div>
             </div>
        </nav>
-       <div class="contenedorPrincipal" style="display: grid; grid-template-columns: auto; place-self: center; place-items:center">
-            <div class="contenedor-desplazable">
+       <main class="contenedorPrincipal" style="display: grid; grid-template-columns: auto auto; ">
+            <section class="ContenedorInfo" style=" width:400px">
+                <h1>Wario's</h1>
+                <figure class="BuissnesImage"style="width:350px; height:350px;  ">
+                            <img src="./Images/placeholder.png" style="width:100%; height:100%; object-fit: cover;">
+                </figure>
+                <h3>Vendemos los mejores Warios traidos a usted en diferentes tipos de salsa y presentaciones</h3>
+                <article style="display:grid; grid-template-columns: auto auto;">
+                    <div style="grid-column:1;">
+                        <h6>Tiempo de espera:</h6>
+                        <p>5.99 Minutos</p>
+                    </div>
+                    <div style="grid-column:2;">
+                        <h6>Status:</h6>
+                        <p>Cerrado</p>
+                    </div>
+                </article>
+            </section>    
+            <section class="ContenedorItems">
                  <div class="Item" style="display: grid;  grid-template-rows:100px,20px;" >
                     <div class="FoodCard" style="display: flex;">
-                        <div class="FoodImage"style="width:150px; height:150px;  ">
+                        <figure class="FoodImage"style="width:150px; height:150px;  ">
                             <img src="./Images/placeholder.png" style="width:100%; height:100%; object-fit: cover;">
-                        </div>
+                        </figure>
                         <div class="FoodDescription">
                             <h2>Wario en salsa verde</h2>
                             <p><i>$25.80</i></p>
@@ -34,18 +51,18 @@
                         </div>
                         
                     </div>
-                    <div class="FoodBtns" style="display:flex">
+                    <footer class="FoodBtns" style="display:flex">
                         <button>Ordenar</button>
                             <button class="Mas">+</button>
                                 <p>Agregar</p>
                             <button class="Menos">-</button>
-                    </div>
+                    </footer>
                 </div>
                 <div class="Item" style="display: grid;  grid-template-rows:100px,20px;" >
                     <div class="FoodCard" style="display: flex;">
-                        <div class="FoodImage"style="width:150px; height:150px;  ">
+                        <figure class="FoodImage"style="width:150px; height:150px;  ">
                             <img src="./Images/placeholder.png" style="width:100%; height:100%; object-fit: cover;">
-                        </div>
+                        </figure>
                         <div class="FoodDescription">
                             <h2>Wario en salsa verde</h2>
                             <p><i>$25.80</i></p>
@@ -53,18 +70,18 @@
                         </div>
                         
                     </div>
-                    <div class="FoodBtns" style="display:flex">
+                    <footer class="FoodBtns" style="display:flex">
                         <button>Ordenar</button>
                             <button class="Mas">+</button>
                                 <p>Agregar</p>
                             <button class="Menos">-</button>
-                    </div>
+                    </footer>
                 </div>
                 <div class="Item" style="display: grid;  grid-template-rows:100px,20px;" >
                     <div class="FoodCard" style="display: flex;">
-                        <div class="FoodImage"style="width:150px; height:150px;  ">
+                        <figure class="FoodImage"style="width:150px; height:150px;  ">
                             <img src="./Images/placeholder.png" style="width:100%; height:100%; object-fit: cover;">
-                        </div>
+                        </figure>
                         <div class="FoodDescription">
                             <h2>Wario en salsa verde</h2>
                             <p><i>$25.80</i></p>
@@ -72,18 +89,18 @@
                         </div>
                         
                     </div>
-                    <div class="FoodBtns" style="display:flex">
+                    <footer class="FoodBtns" style="display:flex">
                         <button>Ordenar</button>
                             <button class="Mas">+</button>
                                 <p>Agregar</p>
                             <button class="Menos">-</button>
-                    </div>
+                    </footer>
                 </div>
                 <div class="Item" style="display: grid;  grid-template-rows:100px,20px;" >
                     <div class="FoodCard" style="display: flex;">
-                        <div class="FoodImage"style="width:150px; height:150px;  ">
+                        <figure class="FoodImage"style="width:150px; height:150px;  ">
                             <img src="./Images/placeholder.png" style="width:100%; height:100%; object-fit: cover;">
-                        </div>
+                        </figure>
                         <div class="FoodDescription">
                             <h2>Wario en salsa verde</h2>
                             <p><i>$25.80</i></p>
@@ -91,18 +108,18 @@
                         </div>
                         
                     </div>
-                  <div class="FoodBtns" style="display:flex">
+                  <footer class="FoodBtns" style="display:flex">
                         <button>Ordenar</button>
                             <button class="Mas">+</button>
                                 <p>Agregar</p>
                             <button class="Menos">-</button>
-                    </div>
+                   </footer>
                 </div>
                 <div class="Item" style="display: grid;  grid-template-rows:100px,20px;" >
                     <div class="FoodCard" style="display: flex;">
-                        <div class="FoodImage"style="width:150px; height:150px;  ">
+                        <figure class="FoodImage"style="width:150px; height:150px;  ">
                             <img src="./Images/placeholder.png" style="width:100%; height:100%; object-fit: cover;">
-                        </div>
+                        </figure>
                         <div class="FoodDescription">
                             <h2>Wario en salsa verde</h2>
                             <p><i>$25.80</i></p>
@@ -110,16 +127,17 @@
                         </div>
                         
                     </div>
-                   <div class="FoodBtns" style="display:flex">
+                   <footer class="FoodBtns" style="display:flex">
                         <button>Ordenar</button>
                             <button class="Mas">+</button>
                                 <p>Agregar</p>
                             <button class="Menos">-</button>
-                    </div>
+                    </footer>   
                 </div>
                   
-            </div>
-       </div>
+            </section>
+        </main>
+
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
         <script src="https://kit.fontawesome.com/a8d9f3784b.js" crossorigin="anonymous"></script>
     </body>
