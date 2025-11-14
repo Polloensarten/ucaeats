@@ -1,0 +1,41 @@
+.contenedor-desplazable {
+    padding: 1px;
+  width: 700px;
+  height: 600px;
+  overflow: auto; /* Opcional: scroll, hidden, visible */
+  border-radius: 10px;
+}
+.contenedorPrincipal
+{
+    padding-top: 10px;
+    place-items: center;
+}
+.FoodDescription
+{
+    padding: 5px;
+    width: fit-content;
+    height:fit-content;
+}
+.Item
+{
+    border-radius: 10px;
+    border: 1px solid gray;
+    margin-bottom: 10px;
+}
+.FoodImage
+{
+    padding: 10px;
+}
+.FoodBtns
+{
+    padding-left: 10px;
+    gap: 10px;
+}
+.Menos
+{
+    border-radius: 100%;
+}
+.Mas
+{
+    border-radius: 100%;
+}
