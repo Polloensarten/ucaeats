@@ -1,0 +1,23 @@
+.div1
+{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    width: 650px;
+    margin: 40px auto;
+}
+.figura1
+{
+    border: 1px solid black;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    height: 250px;
+    
+}
+/*Hover para figures*/
+.figura1:hover
+{
+   
+    
+}
