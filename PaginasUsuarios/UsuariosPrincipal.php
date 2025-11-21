@@ -134,7 +134,17 @@
             </figure>
 
         </div>
-
+        <dialog open id="review-dialog" class="review-card">
+            <div class="bg">
+                <h2>Calificanos :D</h2>
+                <a href="Resenas.html"><button>Escribe tu reseña</button><a>
+            </div>
+            <div class="blob"></div>    
+        </dialog>
+        <script>
+            const dialog = document.getElementById("review-dialog")
+            dialog.addEventListener("click",()=> dialog.close())
+        </script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
         <script src="https://kit.fontawesome.com/a8d9f3784b.js" crossorigin="anonymous"></script>
     </body>
