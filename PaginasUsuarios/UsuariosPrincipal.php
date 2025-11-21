@@ -11,7 +11,6 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="UsuariosPrincipal.css">
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>UsuariosPrincipal</title>
@@ -19,6 +18,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <link rel="stylesheet" href="UsuariosPrincipal.css">
     <style>
             * {
                 font-family: 'Roboto', sans-serif;
@@ -34,24 +34,12 @@
             <div class="BarraSuperior" style="text-align: center;" class="container-fluid">
                 <p class="navbar-brand mb-0 h1">Bienvenido <?php echo htmlspecialchars($_SESSION['name']);?></p>
                 <div class="d-flex">
-                    <button class="btn btn-primary"><i class="fa-solid fa-cart-shopping"></i></button>
+                    <a href="Carrito.php"><button class="btn btn-primary"><i class="fa-solid fa-cart-shopping"></i></button></a>
                 </div>
             </div>
        </nav>
-<div style="
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
-    width: 650px;
-    margin: 40px auto;
-">
-            <figure style="
-                border: 1px solid black;
-                border-radius: 10px;
-                overflow: hidden;
-                position: relative;
-                height: 250px;
-            ">
+    <div class="div1">
+            <figure class="figura1">
                 <a href="NegocioRand.php" style="text-decoration:none;">
                     <img src="./Images/caf1.jpg"
                          style="width:100%; height:100%; object-fit: cover;">
@@ -146,7 +134,17 @@
             </figure>
 
         </div>
-
+        <dialog open id="review-dialog" class="review-card">
+            <div class="bg">
+                <h2>Calificanos :D</h2>
+                <a href="Resenas.html"><button>Escribe tu reseña</button><a>
+            </div>
+            <div class="blob"></div>    
+        </dialog>
+        <script>
+            const dialog = document.getElementById("review-dialog")
+            dialog.addEventListener("click",()=> dialog.close())
+        </script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
         <script src="https://kit.fontawesome.com/a8d9f3784b.js" crossorigin="anonymous"></script>
     </body>
