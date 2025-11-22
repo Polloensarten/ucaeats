@@ -32,10 +32,7 @@
     <body>
        <nav class="navbar bg-info border-bottom border-body sticky-top">
             <div class="BarraSuperior" style="text-align: center;" class="container-fluid">
-                <p class="navbar-brand mb-0 h1">Bienvenido <?php echo htmlspecialchars($_SESSION['name']);?></p>
-                <div class="d-flex">
-                    <a href="Carrito.php"><button class="btn btn-primary"><i class="fa-solid fa-cart-shopping"></i></button></a>
-                </div>
+                <h1 class="navbar-brand mb-0 h1">Bienvenido <?php echo htmlspecialchars($_SESSION['name']);?></h1>
             </div>
        </nav>
     <div class="div1">
@@ -134,16 +131,70 @@
             </figure>
 
         </div>
-        <dialog open id="review-dialog" class="review-card">
+       <!-- popUp que contiene el formulario de resenas -->
+        <dialog id="review-page" class="popUp-review">
+            <form action="Aqui php para inserta resenas" method="post">
+                <h1>Reseñas</h1>
+                <!-- parte del comentario -->
+                <div class="review-page-group">
+                        <input placeholder="" type="text" required="" disabled>
+                        <label for="name"><?php echo htmlspecialchars($_SESSION['name']);?></label>
+                </div>
+                <!-- Estrellas de calificacion -->
+                 <h6>calificacion</h6>
+                <div class="calificacion">
+                    <fieldset>
+                        <input type="radio" id="star1" value="1" name="rating">
+                        <label for="star1"><i class="fa-solid fa-star"></i></label>
+                        <input type="radio" id="star2" value="2" name="rating">
+                        <label for="star2"><i class="fa-solid fa-star"></i></label>
+                        <input type="radio" id="star3" value="3" name="rating">
+                        <label for="star3"><i class="fa-solid fa-star"></i></label>
+                        <input type="radio" id="star4" value="4" name="rating">
+                        <label for="star4"><i class="fa-solid fa-star"></i></label>
+                        <input type="radio" id="star5" value="5" name="rating">
+                        <label for="star5"><i class="fa-solid fa-star"></i></label>
+                    </fieldset>
+                </div>    
+                <div class="review-page-group">
+                    <textarea placeholder="" id="comment" name="comment" rows="5" required></textarea>
+                    <label for="comment">Comentario</label>
+                </div>
+                
+                <!-- Boton para enviar -->
+                <button type="submit" method="post" action="">Enviar</button>
+            </form>
+        </dialog>
+        <!-- Primer popUp -->
+        <dialog id="review-dialog" class="review-card">
             <div class="bg">
                 <h2>Calificanos :D</h2>
-                <a href="Resenas.html"><button>Escribe tu reseña</button><a>
+                <button onclick="abrirsegundo()">Escribe tu reseña</button>
             </div>
             <div class="blob"></div>    
         </dialog>
+       
+        
+        <!-- script para abrir el popUp -->
         <script>
-            const dialog = document.getElementById("review-dialog")
-            dialog.addEventListener("click",()=> dialog.close())
+            function abrirsegundo() {
+                const segundoDialogo = document.getElementById("review-page")
+                //para mostrar el popup al clickear en el boton
+                segundoDialogo.showModal()
+                //esta parte cierra el popup si se hace click fuera de el
+                segundoDialogo.addEventListener("click", e => {
+                    const dialogDimensions = segundoDialogo.getBoundingClientRect()
+                    if (
+                        e.clientX < dialogDimensions.left ||
+                        e.clientX > dialogDimensions.right ||
+                        e.clientY < dialogDimensions.top ||
+                        e.clientY > dialogDimensions.bottom
+                    ) {
+                        segundoDialogo.close()
+                    }
+                })
+            }
+
         </script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
         <script src="https://kit.fontawesome.com/a8d9f3784b.js" crossorigin="anonymous"></script>

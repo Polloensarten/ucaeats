@@ -20,11 +20,12 @@
 {
     
 }
+/*diseno del popUp que te envia a las resenas*/
 .review-card {
   position: fixed;
   right: -100%; 
   transform: translateY(+100%);
-  animation: slideInRight 1.0s ease forwards;
+  animation: slideInRight 2.0s ease forwards;
   width: 200px;
   height: 250px;
   border-radius: 14px;
@@ -37,6 +38,7 @@
   box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
   ;
 }
+/*animacion de popUp*/
 @keyframes slideInRight {
     0% {
         right: -100%;
@@ -74,7 +76,7 @@
   filter: blur(12px);
   animation: blob-bounce 5s infinite ease;
 }
-
+/*animacion de los bordes*/
 @keyframes blob-bounce {
   0% {
     transform: translate(-100%, -100%) translate3d(0, 0, 0);
@@ -96,8 +98,94 @@
     transform: translate(-100%, -100%) translate3d(0, 0, 0);
   }
 }
-dialog::backdrop
+
+.review-card::backdrop
 {
     background: transparent;
     position: absolute;
 }
+
+/* todo el estilo del popUp con el formulario */
+.popUp-review {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  width: 350px;
+  
+}
+.popUp-review form
+{
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+.review-page-group
+{
+  position: relative;
+}
+.popUp-review form .review-page-group label
+{
+  font-size: 14px;
+  color: rgb(99, 102, 102);
+  position: absolute;
+  top: -10px;
+  left: 10px;
+  background-color: #fff;
+  transition: all .3s ease;
+}
+.popUp-review form .review-page-group input,
+form .review-page-group textarea {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  margin-bottom: 20px;
+  outline: 0;
+  width: 100%;
+  background-color: transparent;
+}
+
+.popUp-review form .review-page-group input:placeholder-shown+ label, .popUp-review form .review-page-group textarea:placeholder-shown +label {
+  top: 10px;
+  background-color: transparent;
+}
+
+.popUp-review form .review-page-group input:focus,
+.popUp-review form .review-page-group textarea:focus {
+  border-color: #3366cc;
+}
+
+.popUp-review form .review-page-group input:focus+ label, .popUp-review form .review-page-group textarea:focus +label {
+  top: -10px;
+  left: 10px;
+  background-color: #fff;
+  color: #3366cc;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.popUp-review form .review-page-group textarea {
+  resize: none;
+  height: 100px;
+}
+/* decoracion de las estrellas */
+.calificacion fieldset {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: start;   
+  align-items: start;
+  margin-bottom: 20px;   
+}
+.calificacion input
+{
+  display: none;
+}
+.calificacion label {
+  font-size: 30px; 
+  color: #ccc;
+  cursor: pointer;
+}
+.calificacion label:hover,
+.calificacion input:checked ~ label {
+  color: rgb(255, 251, 0); 
+}
+
