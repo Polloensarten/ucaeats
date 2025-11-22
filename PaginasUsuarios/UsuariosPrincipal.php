@@ -30,14 +30,19 @@
         </style>
     </head>
     <body>
-       <nav class="navbar bg-info border-bottom border-body sticky-top">
-            <div class="BarraSuperior" style="text-align: center;" class="container-fluid">
-                <h1 class="navbar-brand mb-0 h1">Bienvenido <?php echo htmlspecialchars($_SESSION['name']);?></h1>
+        <nav class="navbar bg-info border-bottom border-body sticky-top">
+            <div name="BarraSuperior" style="text-align: center;" class="container-fluid">
+                <div class="d-flex">
+                    <h1 class="navbar-brand mb-0 h1">Bienvenido <?php echo htmlspecialchars($_SESSION['name']);?></h1>
+                </div>
+                <div class="d-flex">
+                    <a href="CerrarSesion.php"><button class="btn btn-danger"><i class="fa-solid fa-arrow-right-from-bracket"></i></button></a>
+                </div>
             </div>
        </nav>
     <div class="div1">
             <figure class="figura1">
-                <a href="NegocioRand.php" style="text-decoration:none;">
+                <a href="./Negocios/Negocio1.php" style="text-decoration:none;">
                     <img src="./Images/caf1.jpg"
                          style="width:100%; height:100%; object-fit: cover;">
                     <p style="
@@ -62,7 +67,7 @@
                 position: relative;
                 height: 250px;
             ">
-                <a href="NegocioRand.php" style="text-decoration:none;">
+                <a href="./Negocios/Negocio2.php" style="text-decoration:none;">
                     <img src="./Images/tacos.jpeg"
                          style="width:100%; height:100%; object-fit: cover;">
                     <p style="
@@ -87,7 +92,7 @@
                 position: relative;
                 height: 250px;
             ">
-                <a href="NegocioRand.php" style="text-decoration:none;">
+                <a href="./Negocios/Negocio3.php" style="text-decoration:none;">
                     <img src="./Images/carrito.jpg"
                          style="width:100%; height:100%; object-fit: cover;">
                     <p style="
@@ -112,7 +117,7 @@
                 position: relative;
                 height: 250px;
             ">
-                <a href="NegocioRand.php" style="text-decoration:none;">
+                <a href="./Negocios/Negocio4.php" style="text-decoration:none;">
                     <img src="./Images/torta.jpg"
                          style="width:100%; height:100%; object-fit: cover;">
                     <p style="

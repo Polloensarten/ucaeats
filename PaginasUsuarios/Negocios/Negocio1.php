@@ -19,10 +19,10 @@
        <nav class="navbar bg-info border-bottom border-body sticky-top">
             <div name="BarraSuperior" style="text-align: center;" class="container-fluid">
                 <div class="d-flex">
-                    <a href="UsuariosPrincipal.php"><button class="btn btn-danger"><i class="fa-solid fa-arrow-left"></i></button></a>
+                    <a href="#" onclick="window.history.back(); return false;"><button class="btn btn-danger"><i class="fa-solid fa-arrow-left"></i></button></a>
                 </div>
                 <div class="d-flex">
-                    <a href="Carrito.php"><button class="btn btn-primary"><i class="fa-solid fa-cart-shopping"></i></button></a>
+                    <a href="../Carrito.php"><button class="btn btn-primary"><i class="fa-solid fa-cart-shopping"></i></button></a>
                 </div>
             </div>
        </nav>
@@ -30,7 +30,7 @@
             <section class="ContenedorInfo" style=" width:350px">
                 <h1>Cafeteria_1</h1>
                 <figure class="BuissnesImage"style="width:350px; height:350px;  ">
-                            <img src="./Images/caf1.jpg" style="width:94%; height:100%; object-fit: cover;">
+                            <img src="../Images/caf1.jpg" style="width:94%; height:100%; object-fit: cover;">
                 </figure>
                 <h3>Menu de la Cafeteria_1</h3>
                 <article style="display:grid; grid-template-columns: auto auto;">
@@ -48,7 +48,7 @@
                  <div class="Item" style="display: grid;  grid-template-rows:100px,20px;" >
                     <div class="FoodCard" style="display: flex;">
                         <figure class="FoodImage"style="width:150px; height:150px;  ">
-                            <img src="./Images/enchiladas.jpg" style="width:100%; height:100%; object-fit: cover;">
+                            <img src="../Images/enchiladas.jpg" style="width:100%; height:100%; object-fit: cover;">
                         </figure>
                         <div class="FoodDescription">
                             <h2>Enchiladas verdes</h2>
@@ -68,7 +68,7 @@
                 <div class="Item" style="display: grid;  grid-template-rows:100px,20px;" >
                     <div class="FoodCard" style="display: flex;">
                         <figure class="FoodImage"style="width:150px; height:150px;  ">
-                            <img src="./Images/molletes.jpg" style="width:100%; height:100%; object-fit: cover;">
+                            <img src="../Images/molletes.jpg" style="width:100%; height:100%; object-fit: cover;">
                         </figure>
                         <div class="FoodDescription">
                             <h2>Molletes</h2>
@@ -87,7 +87,7 @@
                 <div class="Item" style="display: grid;  grid-template-rows:100px,20px;" >
                     <div class="FoodCard" style="display: flex;">
                         <figure class="FoodImage"style="width:150px; height:150px;  ">
-                            <img src="./Images/chilaquilesRojos.jpg" style="width:100%; height:100%; object-fit: cover;">
+                            <img src="../Images/chilaquilesRojos.jpg" style="width:100%; height:100%; object-fit: cover;">
                         </figure>
                         <div class="FoodDescription">
                             <h2>Chilaquiles Rojos</h2>
@@ -106,7 +106,7 @@
                 <div class="Item" style="display: grid;  grid-template-rows:100px,20px;" >
                     <div class="FoodCard" style="display: flex;">
                         <figure class="FoodImage"style="width:150px; height:150px;  ">
-                            <img src="./Images/sincronizada.jpeg" style="width:100%; height:100%; object-fit: cover;">
+                            <img src="../Images/sincronizada.jpeg" style="width:100%; height:100%; object-fit: cover;">
                         </figure>
                         <div class="FoodDescription">
                             <h2>Sincronizadas</h2>
@@ -125,7 +125,7 @@
                 <div class="Item" style="display: grid;  grid-template-rows:100px,20px;" >
                     <div class="FoodCard" style="display: flex;">
                         <figure class="FoodImage"style="width:150px; height:150px;  ">
-                            <img src="./Images/guajolota.jpg" style="width:100%; height:100%; object-fit: cover;">
+                            <img src="../Images/guajolota.jpg" style="width:100%; height:100%; object-fit: cover;">
                         </figure>
                         <div class="FoodDescription">
                             <h2>Guajolota</h2>
