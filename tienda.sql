@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-11-2025 a las 02:34:33
+-- Tiempo de generación: 24-11-2025 a las 00:26:13
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -40,7 +40,10 @@ CREATE TABLE `tienda` (
 --
 
 INSERT INTO `tienda` (`id_tienda`, `nombreTienda`, `encargado`, `descripcion`, `telefono`) VALUES
-(1, 'ejemplo', 'mr ejemplo', 'ejemplo de como funciona la base de datos', 1234567890);
+(1, 'ejemplo', 'mr ejemplo', 'ejemplo de como funciona la base de datos', 1234567890),
+(2, 'cafeteria2', 'waluigi', 'waaaaaaaaah', 667667667),
+(3, 'mamamia', 'mario', 'wahoo', 1234567),
+(4, 'oh noo', 'luigi', 'ahuuu', 12345679);
 
 --
 -- Índices para tablas volcadas
@@ -60,7 +63,7 @@ ALTER TABLE `tienda`
 -- AUTO_INCREMENT de la tabla `tienda`
 --
 ALTER TABLE `tienda`
-  MODIFY `id_tienda` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_tienda` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
