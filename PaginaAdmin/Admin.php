@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Administración</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: #f2f2f2;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            width: 350px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        button {
+            margin: 8px 0;
+            padding: 10px 20px;
+            width: 100%;
+            cursor: pointer;
+        }
+
+        dialog {
+            border: none;
+            border-radius: 10px;
+            padding: 20px;
+            max-width: 350px;
+            width: 90%;
+            box-shadow: 0 0 20px rgba(0,0,0,0.25);
+        }
+
+        dialog::backdrop {
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        .formulario input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+        }
+
+        .cerrar {
+            margin-top: 10px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h2>Administración</h2>
+
+    <button onclick="abrir('popup-alta')">Alta</button>
+    <button onclick="abrir('popup-baja')">Baja</button>
+    <button onclick="abrir('popup-cambio')">Cambio</button>
+    <a href="#"><button>Ver tabla</button></a>
+    <a href="CerrarSesion.php"><button class="btn btn-danger"><i class="fa-solid fa-arrow-right-from-bracket"></i></button></a>
+</div>
+
+
+<dialog id="popup-alta">
+    <h3>Alta</h3>
+    <div class="formulario">
+        <input type="text" placeholder="Nombre">
+        <input type="text" placeholder="Usuario">
+        <input type="password" placeholder="Contraseña">
+        <button>Guardar</button>
+    </div>
+    <button class="cerrar" onclick="cerrar('popup-alta')">Cerrar</button>
+</dialog>
+
+
+<dialog id="popup-baja">
+    <h3>Baja</h3>
+    <div class="formulario">
+        <input type="text" placeholder="ID o Usuario">
+        <button>Eliminar</button>
+    </div>
+    <button class="cerrar" onclick="cerrar('popup-baja')">Cerrar</button>
+</dialog>
+
+
+<dialog id="popup-cambio">
+    <h3>Cambio</h3>
+    <div class="formulario">
+        <input type="text" placeholder="Usuario a modificar">
+        <input type="text" placeholder="Nuevo nombre">
+        <input type="password" placeholder="Nueva contraseña">
+        <button>Actualizar</button>
+    </div>
+    <button class="cerrar" onclick="cerrar('popup-cambio')">Cerrar</button>
+</dialog>
+
+<script>
+    function abrir(id) {
+        document.getElementById(id).showModal();
+    }
+
+    function cerrar(id) {
+        document.getElementById(id).close();
+    }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://kit.fontawesome.com/a8d9f3784b.js" crossorigin="anonymous"></script>
+</body>
+</html>
