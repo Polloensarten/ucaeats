@@ -24,7 +24,7 @@
 .review-card {
   position: fixed;
   right: -100%; 
-  /*transform: translateY(0%);*/
+  transform: translateY(-50%);
   animation: slideInRight 2.0s ease forwards;
   width: 200px;
   height: 250px;
