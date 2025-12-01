@@ -40,101 +40,54 @@ if (!isset($_SESSION['name'])) {
             </div>
        </nav>
     <div class="div1">
-            <figure class="figura1">
-                <a href="./Negocios/Negocio1.php" style="text-decoration:none;">
-                    <img src="./Images/caf1.jpg"
-                         style="width:100%; height:100%; object-fit: cover;">
-                    <p style="
-                        position: absolute;
-                        bottom: 10px;
-                        left: 0;
-                        right: 0;
-                        text-align: center;
-                        margin: 0;
-                        color: white;
-                        font-weight: bold;
-                        background: rgba(0,0,0,0.4);
-                        padding: 5px 0;
-                    ">Cafeteria_1</p>
-                </a>
-            </figure>
 
-            <figure style="
-                border: 1px solid black;
-                border-radius: 10px;
-                overflow: hidden;
-                position: relative;
-                height: 250px;
-            ">
-                <a href="./Negocios/Negocio2.php" style="text-decoration:none;">
-                    <img src="./Images/tacos.jpeg"
-                         style="width:100%; height:100%; object-fit: cover;">
-                    <p style="
-                        position: absolute;
-                        bottom: 10px;
-                        left: 0;
-                        right: 0;
-                        text-align: center;
-                        margin: 0;
-                        color: white;
-                        font-weight: bold;
-                        background: rgba(0,0,0,0.4);
-                        padding: 5px 0;
-                    ">Cafeteria_2</p>
-                </a>
-            </figure>
+<div class="div1">
 
-            <figure style="
-                border: 1px solid black;
-                border-radius: 10px;
-                overflow: hidden;
-                position: relative;
-                height: 250px;
-            ">
-                <a href="./Negocios/Negocio3.php" style="text-decoration:none;">
-                    <img src="./Images/carrito.jpg"
-                         style="width:100%; height:100%; object-fit: cover;">
-                    <p style="
-                        position: absolute;
-                        bottom: 10px;
-                        left: 0;
-                        right: 0;
-                        text-align: center;
-                        margin: 0;
-                        color: white;
-                        font-weight: bold;
-                        background: rgba(0,0,0,0.4);
-                        padding: 5px 0;
-                    ">Carrito</p>
-                </a>
-            </figure>
-
-            <figure style="
-                border: 1px solid black;
-                border-radius: 10px;
-                overflow: hidden;
-                position: relative;
-                height: 250px;
-            ">
-                <a href="./Negocios/Negocio4.php" style="text-decoration:none;">
-                    <img src="./Images/torta.jpg"
-                         style="width:100%; height:100%; object-fit: cover;">
-                    <p style="
-                        position: absolute;
-                        bottom: 10px;
-                        left: 0;
-                        right: 0;
-                        text-align: center;
-                        margin: 0;
-                        color: white;
-                        font-weight: bold;
-                        background: rgba(0,0,0,0.4);
-                        padding: 5px 0;
-                    ">Cafeteria_3</p>
-                </a>
-            </figure>
-
+<div class="card">
+    <a href="./Negocios/Negocio1.php">
+        <img src="./Images/caf1.jpg">
+        <div class="info">
+            <span>☕</span>
+            <strong>Cafetería 1</strong>
+            <span>🌮</span>
         </div>
+    </a>
+</div>
+
+<div class="card">
+    <a href="./Negocios/Negocio2.php">
+        <img src="./Images/tacos.jpeg">
+        <div class="info">
+            <span>🌮</span>
+            <strong>Cafetería 2</strong>
+            <span>🫓</span>
+        </div>
+    </a>
+</div>
+
+<div class="card">
+    <a href="./Negocios/Negocio3.php">
+        <img src="./Images/carrito.jpg">
+        <div class="info">
+            <span>🛒</span>
+            <strong>Carrito</strong>
+            <span>🍔</span>
+        </div>
+    </a>
+</div>
+
+<div class="card">
+    <a href="./Negocios/Negocio4.php">
+        <img src="./Images/torta.jpg">
+        <div class="info">
+            <span>🥪</span>
+            <strong>Cafetería 3</strong>
+            <span>🫓</span>
+        </div>
+    </a>
+</div>
+
+</div> <!-- cierre del grid -->
        <!-- popUp que contiene el formulario de resenas -->
         <dialog id="review-page" class="popUp-review">
             <form action="procesar_opinion.php" method="post">

@@ -4,80 +4,8 @@
     <meta charset="UTF-8">
     <title>Administración</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background: #f2f2f2;
-        }
-
-        .card {
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            width: 350px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            text-align: center;
-        }
-
-        button {
-            margin: 8px 0;
-            padding: 10px 20px;
-            width: 100%;
-            cursor: pointer;
-        }
-
-        dialog {
-            border: none;
-            border-radius: 10px;
-            padding: 20px;
-            max-width: 400px;
-            width: 90%;
-            box-shadow: 0 0 20px rgba(0,0,0,0.25);
-        }
-
-        dialog::backdrop {
-            background: rgba(0, 0, 0, 0.4);
-        }
-
-        .formulario input, .formulario select {
-            width: 100%;
-            padding: 8px;
-            margin-bottom: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-        }
-
-        .cerrar {
-            margin-top: 10px;
-            width: 100%;
-        }
-
-        .mensaje {
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 5px;
-            text-align: center;
-        }
-
-        .exito {
-            background-color: #d4edda;
-            color: #155724;
-            border: 1px solid #c3e6cb;
-        }
-
-        .error {
-            background-color: #f8d7da;
-            color: #721c24;
-            border: 1px solid #f5c6cb;
-        }
-    </style>
-</head>
-<body>
+    <link rel="stylesheet" href="Admin.css">
+   
 
 <div class="card">
     <h2>Administración</h2>
