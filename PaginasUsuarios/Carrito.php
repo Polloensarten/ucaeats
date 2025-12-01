@@ -1,3 +1,65 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['id'])) {
+    header("Location: ../Login/login.html");
+    exit;
+}
+
+// Procesar acciones del carrito
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['accion'])) {
+        $producto_id = $_POST['producto_id'];
+        
+        switch ($_POST['accion']) {
+            case 'aumentar':
+                foreach ($_SESSION['carrito'] as &$item) {
+                    if ($item['id'] == $producto_id) {
+                        $item['cantidad']++;
+                        break;
+                    }
+                }
+                break;
+                
+            case 'disminuir':
+                foreach ($_SESSION['carrito'] as $key => &$item) {
+                    if ($item['id'] == $producto_id) {
+                        $item['cantidad']--;
+                        if ($item['cantidad'] <= 0) {
+                            unset($_SESSION['carrito'][$key]);
+                        }
+                        break;
+                    }
+                }
+                break;
+                
+            case 'eliminar':
+                foreach ($_SESSION['carrito'] as $key => $item) {
+                    if ($item['id'] == $producto_id) {
+                        unset($_SESSION['carrito'][$key]);
+                        break;
+                    }
+                }
+                break;
+        }
+        
+        // Reindexar array
+        $_SESSION['carrito'] = array_values($_SESSION['carrito']);
+        
+        header('Location: ' . $_SERVER['PHP_SELF']);
+        exit;
+    }
+}
+
+// Calcular totales
+$subtotal = 0;
+foreach ($_SESSION['carrito'] as $item) {
+    $subtotal += $item['precio'] * $item['cantidad'];
+}
+$descuento = 0;
+$total = $subtotal - $descuento;
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -26,114 +88,63 @@
        </nav>
        <main class="contenedorPrincipal" style="display: grid; grid-template-columns: auto auto; "> 
             <section class="ContenedorItems">
-                <div class="Item" style="display: grid; grid-template-rows:100px,20px; background:white;">
-                    <div class="FoodCard" style="display: flex;">
-                        <figure class="FoodImage"style="width:150px; height:150px;  ">
-                            <img src="./Images/molletes.jpg" style="width:100%; height:100%; object-fit: cover;">
-                        </figure>
-                        <div class="FoodDescription">
-                            <h2>Molletes</h2>
-                            <p><i>$25.80</i></p>
-                            <p>Molletes con chorizo</p>
+                <?php if (empty($_SESSION['carrito'])): ?>
+                    <!-- Mostrar mensaje si el carrito está vacío -->
+                    <div class="Item" style="display: grid; grid-template-rows:100px,20px; background:white; text-align: center; padding: 20px;">
+                        <div class="FoodCard" style="display: flex; justify-content: center;">
+                            <div class="FoodDescription">
+                                <h2>Carrito Vacío</h2>
+                                <p>No hay productos en el carrito</p>
+                            </div>
                         </div>
-                        
                     </div>
-                    <footer class="FoodBtns" style="display:flex">
-                       <button class="button">Ordenar</button>
-    <button class="button Mas">+</button>
-    <p>Agregar</p>
-    <button class="button Menos">-</button>
-                    </footer>
-                </div>
-                <div class="Item" style="display: grid; grid-template-rows:100px,20px; background:white;">
-                    <div class="FoodCard" style="display: flex;">
-                        <figure class="FoodImage"style="width:150px; height:150px;  ">
-                            <img src="./Images/guajolota.jpg" style="width:100%; height:100%; object-fit: cover;">
-                        </figure>
-                        <div class="FoodDescription">
-                            <h2>Guajolota</h2>
-                            <p><i>$25.80</i></p>
-                            <p>Torta de tamal verde, rojo o de rajas</p>
+                <?php else: ?>
+                    <?php foreach ($_SESSION['carrito'] as $item): ?>
+                    <div class="Item" style="display: grid; grid-template-rows:100px,20px; background:white;">
+                        <div class="FoodCard" style="display: flex;">
+                            <figure class="FoodImage"style="width:150px; height:150px;  ">
+                                <img src="./Images/<?php echo strtolower(str_replace(' ', '', $item['nombre'])); ?>.jpg" style="width:100%; height:100%; object-fit: cover;" onerror="this.src='./Images/molletes.jpg'">
+                            </figure>
+                            <div class="FoodDescription">
+                                <h2><?php echo htmlspecialchars($item['nombre']); ?></h2>
+                                <p><i>$<?php echo number_format($item['precio'], 2); ?></i></p>
+                                <p>Cantidad: <?php echo $item['cantidad']; ?></p>
+                                <p>Subtotal: $<?php echo number_format($item['precio'] * $item['cantidad'], 2); ?></p>
+                            </div>
                         </div>
-                        
+                        <footer class="FoodBtns" style="display:flex">
+                            <form method="post" style="display: inline;">
+                                <input type="hidden" name="producto_id" value="<?php echo $item['id']; ?>">
+                                <input type="hidden" name="accion" value="aumentar">
+                                <button type="submit" class="button Mas">+</button>
+                            </form>
+                            <p>Agregar</p>
+                            <form method="post" style="display: inline;">
+                                <input type="hidden" name="producto_id" value="<?php echo $item['id']; ?>">
+                                <input type="hidden" name="accion" value="disminuir">
+                                <button type="submit" class="button Menos">-</button>
+                            </form>
+                            <form method="post" style="display: inline; margin-left: 10px;">
+                                <input type="hidden" name="producto_id" value="<?php echo $item['id']; ?>">
+                                <input type="hidden" name="accion" value="eliminar">
+                                <button type="submit" class="button" style="background: #dc3545;">Eliminar</button>
+                            </form>
+                        </footer>
                     </div>
-                    <footer class="FoodBtns" style="display:flex">
-                        <button class="button">Ordenar</button>
-    <button class="button Mas">+</button>
-    <p>Agregar</p>
-    <button class="button Menos">-</button>
-                    </footer>
-                </div>
-                <div class="Item" style="display: grid; grid-template-rows:100px,20px; background:white;">
-                    <div class="FoodCard" style="display: flex;">
-                        <figure class="FoodImage"style="width:150px; height:150px;  ">
-                            <img src="./Images/chilaquilesRojos.jpg" style="width:100%; height:100%; object-fit: cover;">
-                        </figure>
-                        <div class="FoodDescription">
-                            <h2>Chilaquiles Rojos</h2>
-                            <p><i>$25.80</i></p>
-                            <p>Chilaquiles rojos con crema, queso y pollo</p>
-                        </div>
-                        
-                    </div>
-                    <footer class="FoodBtns" style="display:flex">
-                        <button class="button">Ordenar</button>
-    <button class="button Mas">+</button>
-    <p>Agregar</p>
-    <button class="button Menos">-</button>
-
-                    </footer>
-                </div>
-                <div class="Item" style="display: grid; grid-template-rows:100px,20px; background:white;">
-                    <div class="FoodCard" style="display: flex;">
-                        <figure class="FoodImage"style="width:150px; height:150px;  ">
-                            <img src="./Images/enchiladas.jpg" style="width:100%; height:100%; object-fit: cover;">
-                        </figure>
-                        <div class="FoodDescription">
-                            <h2>Enchiladas verdes</h2>
-                            <p><i>$25.80</i></p>
-                            <p>Unas clasicas enchiladas verdes, con pollo, queso rallado y crema</p>
-                        </div>
-                        
-                    </div>
-                  <footer class="FoodBtns" style="display:flex">
-                        <button class="button">Ordenar</button>
-    <button class="button Mas">+</button>
-    <p>Agregar</p>
-    <button class="button Menos">-</button>
-                   </footer>
-                </div>
-                <div class="Item" style="display: grid; grid-template-rows:100px,20px; background:white;">
-                    <div class="FoodCard" style="display: flex;">
-                        <figure class="FoodImage"style="width:150px; height:150px;  ">
-                            <img src="./Images/sincronizada.jpeg" style="width:100%; height:100%; object-fit: cover;">
-                        </figure>
-                        <div class="FoodDescription">
-                            <h2>Sincronizadas</h2>
-                            <p><i>$25.80</i></p>
-                            <p>Tortilla de harina con queso oaxaca y jamon de pavo</p>
-                        </div>
-                        
-                    </div>
-                   <footer class="FoodBtns" style="display:flex">
-<button class="button">Ordenar</button>
-    <button class="button Mas">+</button>
-    <p>Agregar</p>
-    <button class="button Menos">-</button>
-
-                    </footer>   
-                </div>
-                  
+                    <?php endforeach; ?>
+                <?php endif; ?>
             </section>
             <section class="ContenedorPago" style=" width:400px">
                 <article class="Precio">
-                    <p>subtotal:</p>
-                    <p>descuento:</p>
+                    <p>subtotal: $<?php echo number_format($subtotal, 2); ?></p>
+                    <p>descuento: $<?php echo number_format($descuento, 2); ?></p>
                     <hr>
-                    <h5>Total:</h5>
+                    <h5>Total: $<?php echo number_format($total, 2); ?></h5>
                 </article>
                 <footer style="display:flex; padding-top:10px;">
-                <button class="button" style="width:100%">Comprar</button>
+                    <a href="pago.php" style="width: 100%;">
+                        <button class="button" style="width:100%" <?php echo empty($_SESSION['carrito']) ? 'disabled' : ''; ?>>Comprar</button>
+                    </a>
                 </footer>
             </section>    
         </main>

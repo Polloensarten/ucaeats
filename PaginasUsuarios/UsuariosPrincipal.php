@@ -1,13 +1,12 @@
 <?php
-    // Iniciar la sesión (necesario en cada página que use sesiones)
-        session_start();
+session_start();
 
-        // Verificar si el usuario ha iniciado sesión
-        if (!isset($_SESSION['name'])) {
-            header("Location: ../Login/login.html"); // Redirigir al login si no ha iniciado sesión
-            exit();
-        }
-    ?>    
+// Verificar si el usuario ha iniciado sesión
+if (!isset($_SESSION['name'])) {
+    header("Location: ../Login/login.html");
+    exit();
+}
+?>    
 <!DOCTYPE html>
 <html>
     <head>
@@ -138,18 +137,18 @@
         </div>
        <!-- popUp que contiene el formulario de resenas -->
         <dialog id="review-page" class="popUp-review">
-            <form action="Aqui php para inserta resenas" method="post">
+            <form action="procesar_opinion.php" method="post">
                 <h1>Reseñas</h1>
                 <!-- parte del comentario -->
                 <div class="review-page-group">
-                        <input placeholder="" type="text" required="" disabled>
-                        <label for="name"><?php echo htmlspecialchars($_SESSION['name']);?></label>
+                        <input placeholder="" type="text" value="<?php echo htmlspecialchars($_SESSION['name']);?>" disabled>
+                        <label for="name">Usuario</label>
                 </div>
                 <!-- Estrellas de calificacion -->
                  <h6>calificacion</h6>
                 <div class="calificacion">
                     <fieldset>
-                        <input type="radio" id="star1" value="1" name="rating">
+                        <input type="radio" id="star1" value="1" name="rating" required>
                         <label for="star1"><i class="fa-solid fa-star"></i></label>
                         <input type="radio" id="star2" value="2" name="rating">
                         <label for="star2"><i class="fa-solid fa-star"></i></label>
@@ -167,7 +166,7 @@
                 </div>
                 
                 <!-- Boton para enviar -->
-                <button type="submit" method="post" action="">Enviar</button>
+                <button type="submit">Enviar</button>
             </form>
         </dialog>
         <!-- Primer popUp -->
@@ -182,6 +181,24 @@
         
         <!-- script para abrir el popUp -->
         <script>
+            // Mostrar el primer diálogo automáticamente
+            window.onload = function() {
+                const primerDialogo = document.getElementById("review-dialog");
+                primerDialogo.showModal();
+                
+                primerDialogo.addEventListener("click", e => {
+                    const dialogDimensions = primerDialogo.getBoundingClientRect()
+                    if (
+                        e.clientX < dialogDimensions.left ||
+                        e.clientX > dialogDimensions.right ||
+                        e.clientY < dialogDimensions.top ||
+                        e.clientY > dialogDimensions.bottom
+                    ) {
+                        primerDialogo.close()
+                    }
+                })
+            }
+
             function abrirsegundo() {
                 const segundoDialogo = document.getElementById("review-page")
                 //para mostrar el popup al clickear en el boton
@@ -199,7 +216,6 @@
                     }
                 })
             }
-
         </script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
         <script src="https://kit.fontawesome.com/a8d9f3784b.js" crossorigin="anonymous"></script>

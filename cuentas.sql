@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 05-11-2025 a las 01:49:48
+-- Tiempo de generación: 01-12-2025 a las 01:07:21
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -40,8 +40,10 @@ CREATE TABLE `cuentas` (
 --
 
 INSERT INTO `cuentas` (`id_usuario`, `nombreUsuario`, `contrasena`, `numeroTelefono`, `tipo`) VALUES
-(1, 'prueba', '123', 1234567890, 1),
-(3, 'prueba2', '123', 1234567899, 1);
+(3, 'prueba2', '123', 1234567899, 1),
+(6, 'admin', '1111', 783894, 2),
+(7, '', '$2y$10$UWcJxHANeZBt/', 9999, 0),
+(9, 'a', '22', 879461, 1);
 
 --
 -- Índices para tablas volcadas
@@ -63,7 +65,7 @@ ALTER TABLE `cuentas`
 -- AUTO_INCREMENT de la tabla `cuentas`
 --
 ALTER TABLE `cuentas`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

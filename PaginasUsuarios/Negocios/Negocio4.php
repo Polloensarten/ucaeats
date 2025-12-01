@@ -1,3 +1,48 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['id'])) {
+    header("Location: ../Login/login.html");
+    exit;
+}
+
+// Inicializar carrito si no existe
+if (!isset($_SESSION['carrito'])) {
+    $_SESSION['carrito'] = [];
+}
+
+// Procesar agregar al carrito
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['agregar_carrito'])) {
+    $producto_id = $_POST['producto_id'];
+    $producto_nombre = $_POST['producto_nombre'];
+    $producto_precio = floatval($_POST['producto_precio']);
+    $cantidad = intval($_POST['cantidad']);
+    
+    // Buscar si el producto ya está en el carrito
+    $encontrado = false;
+    foreach ($_SESSION['carrito'] as &$item) {
+        if ($item['id'] == $producto_id) {
+            $item['cantidad'] += $cantidad;
+            $encontrado = true;
+            break;
+        }
+    }
+    
+    // Si no está, agregarlo
+    if (!$encontrado) {
+        $_SESSION['carrito'][] = [
+            'id' => $producto_id,
+            'nombre' => $producto_nombre,
+            'precio' => $producto_precio,
+            'cantidad' => $cantidad
+        ];
+    }
+    
+    // Redirigir para evitar reenvío del formulario
+    header('Location: ' . $_SERVER['PHP_SELF']);
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -12,6 +57,12 @@
         <style>
             * {
                 font-family: 'Roboto', sans-serif;
+            }
+            .cantidad-display {
+                margin: 0 10px;
+                font-weight: bold;
+                min-width: 20px;
+                text-align: center;
             }
         </style>
     </head>
@@ -36,8 +87,11 @@
                     die("Error de conexión: " . $conn->connect_error);
                 }
                 
-                // Id perteneciente a la tienda
+                // ═══════════════════════════════════════════════════════
+                // ID DE LA TIENDA - SOLO CAMBIA ESTE NÚMERO PARA OTROS NEGOCIOS
+                // ═══════════════════════════════════════════════════════
                 $id_tienda = 4;
+                // ═══════════════════════════════════════════════════════
                 
                 // Consulta de tienda
                 $sql_tienda = "SELECT id_tienda, nombreTienda, encargado, telefono, descripcion FROM tienda WHERE id_tienda = ?";
@@ -65,8 +119,8 @@
                     echo "</div>";
                     echo "</article>";
                 } else {
-    echo "<h2>No se encontraron productos</h2>";
-}
+                    echo "<h2>No se encontraron productos</h2>";
+                }
                 $stmt_tienda->close();
                 ?>
             </section>    
@@ -116,11 +170,23 @@
                         echo "<p>" . htmlspecialchars($producto['descrip_prod']) . "</p>";
                         echo "</div>";
                         echo "</div>";
-                        echo "<footer class='FoodBtns' style='display:flex'>";
-                        echo "<button class='button'>Ordenar</button>";
-                        echo "<button class='button Mas'>+</button>";
-                        echo "<p>Agregar</p>";
-                        echo "<button class='button Menos'>-</button>";
+                        echo "<footer class='FoodBtns' style='display:flex; align-items: center;'>";
+                        
+                        // Formulario para ordenar
+                        echo "<form method='post' style='display: inline; margin-right: 10px;'>";
+                        echo "<input type='hidden' name='agregar_carrito' value='1'>";
+                        echo "<input type='hidden' name='producto_id' value='" . $producto['id_prod'] . "'>";
+                        echo "<input type='hidden' name='producto_nombre' value='" . htmlspecialchars($producto['nombre_prod']) . "'>";
+                        echo "<input type='hidden' name='producto_precio' value='" . $producto['precio'] . "'>";
+                        echo "<input type='hidden' name='cantidad' id='cantidad_" . $producto['id_prod'] . "' value='1'>";
+                        echo "<button type='submit' class='button'>Ordenar</button>";
+                        echo "</form>";
+                        
+                        // Botones para aumentar/disminuir cantidad
+                        echo "<button type='button' class='button Menos' onclick='disminuirCantidad(" . $producto['id_prod'] . ")'>-</button>";
+                        echo "<span class='cantidad-display' id='display_" . $producto['id_prod'] . "'>1</span>";
+                        echo "<button type='button' class='button Mas' onclick='aumentarCantidad(" . $producto['id_prod'] . ")'>+</button>";
+                        
                         echo "</footer>";
                         echo "</div>";
 
@@ -133,6 +199,25 @@
                 ?>
             </section>
         </main>
+
+        <script>
+            function aumentarCantidad(productoId) {
+                const cantidadInput = document.getElementById('cantidad_' + productoId);
+                const display = document.getElementById('display_' + productoId);
+                let cantidad = parseInt(cantidadInput.value) + 1;
+                cantidadInput.value = cantidad;
+                display.textContent = cantidad;
+            }
+
+            function disminuirCantidad(productoId) {
+                const cantidadInput = document.getElementById('cantidad_' + productoId);
+                const display = document.getElementById('display_' + productoId);
+                let cantidad = parseInt(cantidadInput.value) - 1;
+                if (cantidad < 1) cantidad = 1;
+                cantidadInput.value = cantidad;
+                display.textContent = cantidad;
+            }
+        </script>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
         <script src="https://kit.fontawesome.com/a8d9f3784b.js" crossorigin="anonymous"></script>

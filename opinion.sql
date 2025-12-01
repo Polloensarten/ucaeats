@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-11-2025 a las 02:31:07
+-- Tiempo de generación: 01-12-2025 a las 01:07:38
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -38,7 +38,8 @@ CREATE TABLE `opinion` (
 --
 
 INSERT INTO `opinion` (`id_opinion`, `calificacion`, `descripcion`) VALUES
-(1, 1, 'no me gusto');
+(1, 1, 'no me gusto'),
+(2, 3, 'hola');
 
 --
 -- Índices para tablas volcadas
@@ -58,7 +59,7 @@ ALTER TABLE `opinion`
 -- AUTO_INCREMENT de la tabla `opinion`
 --
 ALTER TABLE `opinion`
-  MODIFY `id_opinion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_opinion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

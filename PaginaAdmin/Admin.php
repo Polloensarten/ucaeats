@@ -35,7 +35,7 @@
             border: none;
             border-radius: 10px;
             padding: 20px;
-            max-width: 350px;
+            max-width: 400px;
             width: 90%;
             box-shadow: 0 0 20px rgba(0,0,0,0.25);
         }
@@ -44,15 +44,36 @@
             background: rgba(0, 0, 0, 0.4);
         }
 
-        .formulario input {
+        .formulario input, .formulario select {
             width: 100%;
             padding: 8px;
             margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
         }
 
         .cerrar {
             margin-top: 10px;
             width: 100%;
+        }
+
+        .mensaje {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .exito {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
         }
     </style>
 </head>
@@ -64,41 +85,80 @@
     <button onclick="abrir('popup-alta')">Alta</button>
     <button onclick="abrir('popup-baja')">Baja</button>
     <button onclick="abrir('popup-cambio')">Cambio</button>
-    <a href="#"><button>Ver tabla</button></a>
-    <a href="CerrarSesion.php"><button class="btn btn-danger"><i class="fa-solid fa-arrow-right-from-bracket"></i></button></a>
+    <a href="ver_tabla.php"><button>Ver tabla</button></a>
+    <a href="CerrarSesion.php"><button class="btn btn-danger"><i class="fa-solid fa-arrow-right-from-bracket"></i> Cerrar Sesión</button></a>
 </div>
 
-
+<!-- Modal Alta -->
 <dialog id="popup-alta">
-    <h3>Alta</h3>
-    <div class="formulario">
-        <input type="text" placeholder="Nombre">
-        <input type="text" placeholder="Usuario">
-        <input type="password" placeholder="Contraseña">
-        <button>Guardar</button>
-    </div>
+    <h3>Alta de Cuenta</h3>
+    <?php
+    if (isset($_GET['alta']) && $_GET['alta'] === 'exito') {
+        echo '<div class="mensaje exito">Cuenta agregada correctamente</div>';
+    } elseif (isset($_GET['alta']) && $_GET['alta'] === 'error') {
+        $mensaje = $_GET['mensaje'] ?? 'Error desconocido';
+        echo '<div class="mensaje error">Error: ' . htmlspecialchars($mensaje) . '</div>';
+    }
+    ?>
+<form method="POST" action="procesar_admin.php" class="formulario">
+    <input type="text" name="nombreUsuario" placeholder="Nombre de Usuario" required>
+    <input type="text" name="contrasena" placeholder="Contraseña" required>
+    <input type="tel" name="numeroTelefono" placeholder="Número de Teléfono" required>
+    <select name="tipo" required>
+        <option value="">Seleccionar tipo</option>
+        <option value="cliente">Cliente</option>
+        <option value="administrador">Administrador</option>
+        <option value="vendedor">Vendedor</option>
+    </select>
+    <input type="hidden" name="accion" value="alta">
+    <button type="submit">Guardar</button>
+</form>
     <button class="cerrar" onclick="cerrar('popup-alta')">Cerrar</button>
 </dialog>
 
-
+<!-- Modal Baja -->
 <dialog id="popup-baja">
-    <h3>Baja</h3>
-    <div class="formulario">
-        <input type="text" placeholder="ID o Usuario">
-        <button>Eliminar</button>
-    </div>
+    <h3>Baja de Cuenta</h3>
+    <?php
+    if (isset($_GET['baja']) && $_GET['baja'] === 'exito') {
+        echo '<div class="mensaje exito">Cuenta eliminada correctamente</div>';
+    } elseif (isset($_GET['baja']) && $_GET['baja'] === 'error') {
+        $mensaje = $_GET['mensaje'] ?? 'Error desconocido';
+        echo '<div class="mensaje error">Error: ' . htmlspecialchars($mensaje) . '</div>';
+    }
+    ?>
+    <form method="POST" action="procesar_admin.php" class="formulario">
+        <input type="text" name="id_usuario" placeholder="ID de usuario" required>
+        <input type="hidden" name="accion" value="baja">
+        <button type="submit" class="btn btn-danger">Eliminar</button>
+    </form>
     <button class="cerrar" onclick="cerrar('popup-baja')">Cerrar</button>
 </dialog>
 
-
+<!-- Modal Cambio -->
 <dialog id="popup-cambio">
-    <h3>Cambio</h3>
-    <div class="formulario">
-        <input type="text" placeholder="Usuario a modificar">
-        <input type="text" placeholder="Nuevo nombre">
-        <input type="password" placeholder="Nueva contraseña">
-        <button>Actualizar</button>
-    </div>
+    <h3>Cambio de Cuenta</h3>
+    <?php
+    if (isset($_GET['cambio']) && $_GET['cambio'] === 'exito') {
+        echo '<div class="mensaje exito">Cuenta actualizada correctamente</div>';
+    } elseif (isset($_GET['cambio']) && $_GET['cambio'] === 'error') {
+        $mensaje = $_GET['mensaje'] ?? 'Error desconocido';
+        echo '<div class="mensaje error">Error: ' . htmlspecialchars($mensaje) . '</div>';
+    }
+    ?>
+    <form method="POST" action="procesar_admin.php" class="formulario">
+        <input type="text" name="id_usuario" placeholder="ID de usuario a modificar" required>
+        <input type="password" name="nueva_contrasena" placeholder="Nueva contraseña (dejar vacío para no cambiar)">
+        <input type="tel" name="nuevo_telefono" placeholder="Nuevo teléfono (dejar vacío para no cambiar)">
+        <select name="nuevo_tipo">
+            <option value="">Seleccionar nuevo tipo (opcional)</option>
+            <option value="cliente">Cliente</option>
+            <option value="administrador">Administrador</option>
+            <option value="vendedor">Vendedor</option>
+        </select>
+        <input type="hidden" name="accion" value="cambio">
+        <button type="submit">Actualizar</button>
+    </form>
     <button class="cerrar" onclick="cerrar('popup-cambio')">Cerrar</button>
 </dialog>
 
@@ -109,7 +169,26 @@
 
     function cerrar(id) {
         document.getElementById(id).close();
+        // Limpiar parámetros de URL al cerrar
+        if (window.history.replaceState) {
+            window.history.replaceState(null, null, window.location.pathname);
+        }
     }
+
+    // Cerrar modales al hacer clic fuera de ellos
+    document.addEventListener('DOMContentLoaded', function() {
+        const modals = document.querySelectorAll('dialog');
+        modals.forEach(modal => {
+            modal.addEventListener('click', function(event) {
+                if (event.target === modal) {
+                    modal.close();
+                    if (window.history.replaceState) {
+                        window.history.replaceState(null, null, window.location.pathname);
+                    }
+                }
+            });
+        });
+    });
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://kit.fontawesome.com/a8d9f3784b.js" crossorigin="anonymous"></script>
