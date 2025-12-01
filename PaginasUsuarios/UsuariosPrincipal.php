@@ -49,14 +49,14 @@ if (!isset($_SESSION['name'])) {
         <div class="info">
             <span>☕</span>
             <strong>Cafetería 1</strong>
-            <span>🌮</span>
+            <span>🥪</span>
         </div>
     </a>
 </div>
 
 <div class="card">
     <a href="./Negocios/Negocio2.php">
-        <img src="./Images/tacos.jpeg">
+        <img src="./Images/caf2.jpg">
         <div class="info">
             <span>🌮</span>
             <strong>Cafetería 2</strong>
@@ -67,9 +67,9 @@ if (!isset($_SESSION['name'])) {
 
 <div class="card">
     <a href="./Negocios/Negocio3.php">
-        <img src="./Images/carrito.jpg">
+        <img src="./Images/carritos.jpg">
         <div class="info">
-            <span>🛒</span>
+            <span>🍗</span>
             <strong>Carrito</strong>
             <span>🍔</span>
         </div>
@@ -78,11 +78,11 @@ if (!isset($_SESSION['name'])) {
 
 <div class="card">
     <a href="./Negocios/Negocio4.php">
-        <img src="./Images/torta.jpg">
+        <img src="./Images/caf3.jpg">
         <div class="info">
-            <span>🥪</span>
-            <strong>Cafetería 3</strong>
-            <span>🫓</span>
+            <span>🌮</span>
+            <strong>Tacos</strong>
+            <span>🌮</span>
         </div>
     </a>
 </div>
