@@ -104,7 +104,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['agregar_carrito'])) {
                     $tienda = $result_tienda->fetch_assoc();
                     echo "<h1>" . htmlspecialchars($tienda['nombreTienda']) . "</h1>";
                     echo "<figure class='BuissnesImage' style='width:350px; height:350px;'>";
-                    echo "<img src='../Images/caf1.jpg' style='width:94%; height:100%; object-fit: cover;'>";
+                    echo "<img src='../Images/caf3.jpg' style='width:94%; height:100%; object-fit: cover;'>";
                     echo "</figure>";
                     echo "<h3>" . htmlspecialchars($tienda['descripcion']) . "</h3>";
 

@@ -1,19 +1,71 @@
-.div1
-{
+.div1 {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 30px;
     width: 650px;
     margin: 40px auto;
 }
-.figura1
-{
-    border: 1px solid black;
-    border-radius: 10px;
+
+.card {
+    background: #ffffff;
+    border-radius: 20px;
     overflow: hidden;
+    border: none;
+    margin: 0;
+    padding: 0;
+    height: auto;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
     position: relative;
-    height: 250px;
-    
+    will-change: transform;  /* ← evita reflow que movía el popup */
+}
+
+/* Animación equilibrada (solo hacia arriba, sin empujar nada) */
+.card:hover {
+    transform: translateY(-5px) scale(1.01);  /* más pequeño = no afecta layout */
+    box-shadow: 0 12px 25px rgba(0,0,0,0.25);
+}
+
+/* Al hacer click */
+.card:active {
+    transform: scale(0.98);
+}
+
+/* Brillo animado */
+.card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.5), transparent);
+    transition: 0.6s;
+    pointer-events: none; /* ← evita interferir con el popup */
+}
+
+.card:hover::before {
+    left: 100%;
+}
+/* Imagen */
+.card img {
+    width: 100%;
+    height: 170px;
+    object-fit: cover;
+    border-radius: 20px 20px 0 0;
+}
+
+/* Texto */
+.card .info {
+    padding: 15px 10px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
 }
 /*Hover para figures*/
 .figura1:hover
@@ -22,21 +74,33 @@
 }
 /*diseno del popUp que te envia a las resenas*/
 .review-card {
-  position: fixed;
-  right: -100%; 
-  transform: translateY(-50%);
-  animation: slideInRight 2.0s ease forwards;
+position: fixed !important;
+    bottom: 20px !important;
+    right: 20px !important;
+
+    transform: none !important;
+    animation: none !important;
+
   width: 200px;
   height: 250px;
+
   border-radius: 14px;
-  border:none;
+  border: none;
   overflow: hidden;
+
+  margin: 0 !important;
+    left: auto !important;
+    top: auto !important;
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
   box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
-  ;
+
+  transform: none !important;   /* evita centrado */
+  animation: none !important;   /* elimina animación que lo movía */
 }
 /*animacion de popUp*/
 @keyframes slideInRight {
@@ -134,58 +198,96 @@
   transition: all .3s ease;
 }
 .popUp-review form .review-page-group input,
-form .review-page-group textarea {
-  padding: 10px;
-  border-radius: 5px;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  margin-bottom: 20px;
-  outline: 0;
-  width: 100%;
-  background-color: transparent;
+.popUp-review form .review-page-group textarea {
+    padding: 12px;
+    border-radius: 10px;
+    border: 1.7px solid rgba(0, 0, 0, 0.15);
+    margin-bottom: 20px;
+    outline: 0;
+    width: 100%;
+    background-color: #f7f7f7;
+    font-size: 15px;
+    transition: all .25s ease-in-out;
 }
 
-.popUp-review form .review-page-group input:placeholder-shown+ label, .popUp-review form .review-page-group textarea:placeholder-shown +label {
-  top: 10px;
-  background-color: transparent;
+.popUp-review form .review-page-group input:placeholder-shown + label, 
+.popUp-review form .review-page-group textarea:placeholder-shown + label {
+    top: 10px;
+    left: 14px;
+    background-color: transparent;
+    color: #777;
 }
 
 .popUp-review form .review-page-group input:focus,
 .popUp-review form .review-page-group textarea:focus {
-  border-color: #3366cc;
+    border-color: #4c7dff;
+    background-color: #fff;
 }
 
-.popUp-review form .review-page-group input:focus+ label, .popUp-review form .review-page-group textarea:focus +label {
-  top: -10px;
-  left: 10px;
-  background-color: #fff;
-  color: #3366cc;
-  font-weight: 600;
-  font-size: 14px;
+.popUp-review form .review-page-group input:focus + label, 
+.popUp-review form .review-page-group textarea:focus + label {
+    top: -10px;
+    left: 12px;
+    background-color: #fff;
+    color: #4c7dff;
+    font-weight: 600;
+    font-size: 14px;
 }
 
 .popUp-review form .review-page-group textarea {
-  resize: none;
-  height: 100px;
-}
-/* decoracion de las estrellas */
-.calificacion fieldset {
-  display: flex;
-  flex-direction: row-reverse;
-  justify-content: start;   
-  align-items: start;
-  margin-bottom: 20px;   
-}
-.calificacion input
-{
-  display: none;
-}
-.calificacion label {
-  font-size: 30px; 
-  color: #ccc;
-  cursor: pointer;
-}
-.calificacion label:hover,
-.calificacion input:checked ~ label {
-  color: rgb(255, 251, 0); 
+    resize: none;
+    height: 120px;
 }
 
+/* decoracion de las estrellas */
+.calificacion fieldset {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: start;   
+    align-items: center;
+    margin-bottom: 20px;   
+    border: none;
+    padding: 0;
+}
+
+.calificacion input {
+    display: none;
+}
+
+.calificacion label {
+    font-size: 32px; 
+    color: #ccc;
+    cursor: pointer;
+    margin-right: 5px;
+    transition: .2s ease;
+}
+
+.calificacion label:hover,
+.calificacion label:hover ~ label,
+.calificacion input:checked ~ label {
+    color: #ffd700;
+}
+
+/* BOTÓN CIRCULAR PARA ENVIAR */
+.popUp-review button[type="submit"] {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: none;
+    background-color: #4c7dff;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    align-self: center;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: .25s ease;
+    font-weight: 600;
+}
+
+.popUp-review button[type="submit"]:hover {
+    background-color: #2d5ffd;
+    transform: scale(1.08);
+}

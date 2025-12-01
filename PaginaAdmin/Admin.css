@@ -1,0 +1,155 @@
+/* --------- GENERAL --------- */
+
+body {
+    background: url('../Images/fondo1.png') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* --------- TARJETA PRINCIPAL --------- */
+
+.card {
+    background: white;
+    padding: 40px;
+    border-radius: 25px;
+    width: 460px;
+    box-shadow: 0px 10px 35px rgba(0,0,0,0.15);
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+    text-align: center;
+}
+
+.card h2 {
+    grid-column: span 2;
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #2c2c2c;
+}
+
+/* --------- BOTONES (Azules) --------- */
+
+.card button {
+    padding: 15px;
+    border: none;
+    width: 100%;
+    cursor: pointer;
+    border-radius: 14px;
+    font-size: 16px;
+    font-weight: 600;
+    transition: 0.2s ease;
+    box-shadow: 0px 3px 8px rgba(0,0,0,0.15);
+}
+
+.card button:not(.btn-danger) {
+    background: #2d85dd;
+    color: white;
+}
+
+.card button:not(.btn-danger):hover {
+    background: #176ab8;
+    transform: translateY(-3px);
+}
+
+/* --------- BOTÓN ROJO CERRAR SESIÓN --------- */
+
+.btn-danger {
+    grid-column: span 2;
+    background: #dc3e3e !important;
+    border-radius: 14px;
+    padding: 16px;
+    font-size: 18px;
+    color: white;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-danger:hover {
+    background: #b72d2d !important;
+    transform: translateY(-3px);
+}
+
+/* --------- POPUPS --------- */
+
+dialog {
+    border: none;
+    border-radius: 18px;
+    padding: 25px;
+    max-width: 360px;
+    width: 90%;
+    background: white;
+    box-shadow: 0 12px 35px rgba(0,0,0,0.3);
+    animation: pop 0.25s ease;
+}
+
+dialog::backdrop {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+@keyframes pop {
+    from { transform: scale(0.85); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* --------- FORMULARIOS --------- */
+
+.formulario input, 
+.formulario select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 12px;
+    border-radius: 10px;
+    border: 1.5px solid #d0d0d0;
+    background: #f4f4f4;
+    transition: 0.25s ease;
+}
+
+.formulario input:focus,
+.formulario select:focus {
+    background: white;
+    border-color: #4c7dff;
+    box-shadow: 0 0 6px rgba(76, 125, 255, 0.35);
+    outline: none;
+}
+
+.formulario button {
+    width: 100%;
+    padding: 13px;
+    border: none;
+    border-radius: 12px;
+    background: #2d85dd;
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.formulario button:hover {
+    background: #176ab8;
+}
+
+/* --------- BOTÓN CERRAR POPUP --------- */
+
+.cerrar {
+    margin-top: 12px;
+    width: 100%;
+    background: #888;
+    color: white;
+    border: none;
+    padding: 11px;
+    border-radius: 10px;
+    font-weight: 600;
+}
+
+.cerrar:hover {
+    background: #6d6d6d;
+}

@@ -127,7 +127,7 @@ $total = $subtotal - $descuento;
                             <form method="post" style="display: inline; margin-left: 10px;">
                                 <input type="hidden" name="producto_id" value="<?php echo $item['id']; ?>">
                                 <input type="hidden" name="accion" value="eliminar">
-                                <button type="submit" class="button" style="background: #dc3545;">Eliminar</button>
+                                <button type="submit" class="button" style="background: #fcfcfcff;">Eliminar</button>
                             </form>
                         </footer>
                     </div>
