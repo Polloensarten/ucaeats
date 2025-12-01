@@ -268,7 +268,7 @@ position: fixed !important;
     color: #ffd700;
 }
 
-/* BOTÓN CIRCULAR DE ENVIAR */
+/* BOTÓN CIRCULAR PARA ENVIAR */
 .popUp-review button[type="submit"] {
     width: 60px;
     height: 60px;
