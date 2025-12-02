@@ -80,7 +80,6 @@
             <option value="">Seleccionar nuevo tipo (opcional)</option>
             <option value="cliente">Cliente</option>
             <option value="administrador">Administrador</option>
-            <option value="vendedor">Vendedor</option>
         </select>
         <input type="hidden" name="accion" value="cambio">
         <button type="submit">Actualizar</button>
