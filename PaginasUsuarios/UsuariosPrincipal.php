@@ -101,15 +101,15 @@ if (!isset($_SESSION['name'])) {
                  <h6>calificacion</h6>
                 <div class="calificacion">
                     <fieldset>
-                        <input type="radio" id="star1" value="1" name="rating" required>
+                        <input type="radio" id="star1" value="5" name="rating" required>
                         <label for="star1"><i class="fa-solid fa-star"></i></label>
-                        <input type="radio" id="star2" value="2" name="rating">
+                        <input type="radio" id="star2" value="4" name="rating">
                         <label for="star2"><i class="fa-solid fa-star"></i></label>
                         <input type="radio" id="star3" value="3" name="rating">
                         <label for="star3"><i class="fa-solid fa-star"></i></label>
-                        <input type="radio" id="star4" value="4" name="rating">
+                        <input type="radio" id="star4" value="2" name="rating">
                         <label for="star4"><i class="fa-solid fa-star"></i></label>
-                        <input type="radio" id="star5" value="5" name="rating">
+                        <input type="radio" id="star5" value="1" name="rating">
                         <label for="star5"><i class="fa-solid fa-star"></i></label>
                     </fieldset>
                 </div>    

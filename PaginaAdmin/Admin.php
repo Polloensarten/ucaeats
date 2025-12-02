@@ -13,7 +13,6 @@
     <button onclick="abrir('popup-alta')">Alta</button>
     <button onclick="abrir('popup-baja')">Baja</button>
     <button onclick="abrir('popup-cambio')">Cambio</button>
-    <a href="ver_tabla.php"><button>Ver tabla</button></a>
     <a href="CerrarSesion.php"><button class="btn btn-danger"><i class="fa-solid fa-arrow-right-from-bracket"></i> Cerrar Sesión</button></a>
 </div>
 
