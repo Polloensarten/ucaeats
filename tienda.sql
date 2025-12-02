@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-12-2025 a las 01:08:07
+-- Tiempo de generación: 02-12-2025 a las 02:59:11
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -40,10 +40,10 @@ CREATE TABLE `tienda` (
 --
 
 INSERT INTO `tienda` (`id_tienda`, `nombreTienda`, `encargado`, `descripcion`, `telefono`) VALUES
-(1, 'ejemplo', 'mr ejemplo', 'ejemplo de como funciona la base de datos', 1234567890),
-(2, 'cafeteria2', 'waluigi', 'waaaaaaaaah', 667667667),
-(3, 'mamamia', 'mario', 'wahoo', 1234567),
-(4, 'oh noo', 'luigi', 'ahuuu', 12345679);
+(1, 'Cafeteria1', 'Doña mary', 'Cafeteria con desayunos diversos', 1234567890),
+(2, 'Cafeteria2', 'Doña rosa', 'Cafeteria con tacos de colores y licuados', 667667667),
+(3, 'Carrito', 'Doña barbara', 'Vendemos chicken tenders, chilaquiles y mas', 1234567),
+(4, 'Tacos', 'Don juan', 'Tacos bien ricos de don juan', 12345679);
 
 --
 -- Índices para tablas volcadas
