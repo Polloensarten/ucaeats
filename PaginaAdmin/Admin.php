@@ -35,7 +35,6 @@
         <option value="">Seleccionar tipo</option>
         <option value="cliente">Cliente</option>
         <option value="administrador">Administrador</option>
-        <option value="vendedor">Vendedor</option>
     </select>
     <input type="hidden" name="accion" value="alta">
     <button type="submit">Guardar</button>

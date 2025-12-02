@@ -179,7 +179,6 @@ function cambioCuenta($conn) {
         $tipos_map = [
             'cliente' => 1,
             'administrador' => 2,
-            'vendedor' => 3
         ];
         
         $tipo_numero = $tipos_map[$nuevo_tipo] ?? 0;
