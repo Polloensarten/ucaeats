@@ -142,11 +142,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['agregar_carrito'])) {
 
                 // set de imágenes
                 $imagenes = [
-                    1 => "chilaquilesRojos.jpg",
-                    2 => "Chila.jpg",
-                    3 => "enchiladas.jpg",
-                    4 => "tacos.jpeg",
-                    5 => "torta.jpg"
+                    1 => "tacos.jpeg",
+                    2 => "HotDog.jpg",
+                    3 => "Licuado_Platano.jpeg",
+                    4 => "Malteada.jpg",
+                    5 => "Agua_Jamaica.jpg",
+                    6=> "Agua_horchata.jpg"
                 ];
                 
                 if ($result_productos->num_rows > 0) {

@@ -20,6 +20,11 @@
     will-change: transform;  /* ← evita reflow que movía el popup */
 }
 
+.card a {
+    text-decoration: none;
+    color: inherit; 
+}
+
 /* Animación equilibrada (solo hacia arriba, sin empujar nada) */
 .card:hover {
     transform: translateY(-5px) scale(1.01);  /* más pequeño = no afecta layout */

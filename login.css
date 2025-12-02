@@ -1,6 +1,6 @@
         
 .type--A {
-  --line_color: #555555;
+  --line_color: #00135c;
   --back_color: #ffecf6;
 }
 .type--B {
@@ -22,6 +22,10 @@
   color: var(--line_color);
   letter-spacing: 2px;
   transition: all 0.3s ease;
+   background: transparent !important; /* SIN FONDO */
+  box-shadow: none !important; 
+  border: none !important;
+  outline: none !important;
 }
 .button__text {
   display: flex;
